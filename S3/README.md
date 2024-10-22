@@ -1,4 +1,4 @@
-                                            # S3
+# S3
 
 Amazon S3, or Simple Storage Service, is like a big digital warehouse where you can store all kinds of data. It's part of Amazon Web Services (AWS), which is a collection of cloud computing services.
 
@@ -8,7 +8,7 @@ What’s cool about S3 is that it's super reliable and secure. Your data is stor
 
 Plus, S3 is really flexible. You can easily access your files from anywhere in the world using the internet, and you can control who gets to see or edit your stuff with different levels of permissions.
 
-S3 Benefits
+#S3 Benefits
 
 Amazon S3 offers a range of benefits that make it a top choice for storing and managing data in the cloud.
 * Firstly, S3 provides exceptional durability and reliability. Your data is stored across muitiple servers and data centers, ensuring that even if one server fails, your files remain safe and accessible.
@@ -17,7 +17,7 @@ Amazon S3 offers a range of benefits that make it a top choice for storing and m
 * Security is also a top priority with S3. You have full control over who can access your data and can encrypt your files to ensure they remain confidential and secure.
 * Additionally, S3 is cost-effective. You only pay for the storage you use, with no upfront fees or long-term contracts, making it a budget-friendly option for businesses of all sizes.
 
-S3 Use Cases
+#S3 Use Cases
 
 Backup: Think of it as a safe place to keep copies of important files, like your computer's backup. If anything happens to your computer, you can get your files back from S3.
 
