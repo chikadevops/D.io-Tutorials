@@ -80,9 +80,10 @@ This practical will be in Two parts-
 
 Security group
 
+* Initially, we'll explain the configuration of inbound and outbound rules for security groups
+* Create a security group allowing HTTP for all traffic and attach it to the instance
 
-
-explore various scenarios:
+Explore various scenarios:
 
 * Implement inbound traffic rules for HTTP and SSH protocols and allow outbound traffic for all.
 * Configure inbound rules for HTTP with no outbound rules.
@@ -90,5 +91,9 @@ explore various scenarios:
 Have no inbound rules but configure outbound rules for all traffic.
 
 NACL
+
+* Examine the default settings for inbound and outbound rules in NACL Configuration
+* Modify the inbound rules to permit traffic from any IPv4 CIDR on all ports
+* Adjust the outbound rules to allow traffic to all CIDRs
 
 
