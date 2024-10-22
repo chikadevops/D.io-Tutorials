@@ -1,4 +1,4 @@
-#`S3`
+                                            # S3
 
 Amazon S3, or Simple Storage Service, is like a big digital warehouse where you can store all kinds of data. It's part of Amazon Web Services (AWS), which is a collection of cloud computing services.
 
