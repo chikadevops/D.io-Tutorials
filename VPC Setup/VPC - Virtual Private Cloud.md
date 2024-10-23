@@ -75,6 +75,58 @@ Using the formular, we calculate
 
 =254
 ```
+What is a gateway?
+
+Gateways are like doorways between different networks. They help data travel between your local network and other networks, like the internet. Just like a gate lets you go from your backyard to the neighborhood park, a gateway lets your data go from your computer to the internet and back again. It's like the traffic cop of the internet, directing your data where it needs to go.
+
+For example - Imagine you live in a city with different neighborhoods, each with its own set of houses. You're in ong neighborhood, let's call it Neighborhood A, and you want to visit a friend who lives in a different neighborhood, Neighborhood B. To get from your neighborhood to your friend's neighborhood, you need to go through a gateway-a special gate that connects the two neighborhoods. This gateway acts as a bridge between the two areas, allowing people and things to pass back and forth.
+
+So, when you leave your house in Neighborhood A, you walk to the gateway, pass through it, and then find your friend's house in Neighborhood B. The gateway helps you navigate from one neighborhood to another, just like how a network gateway helps data travel between different networks.
+
+What is a Route table?
+
+A route table is like a map that helps data find its way around a network. Just like a map shows you the best routes to get from one place to another, a route table tells devices on a network how to send data packets to their destinations.
+
+In simpler terms, a route table lists different destinations and the paths (or "routes") to reach them. When a device receives data that it needs to send somewhere, it consults the route table to figure out where to send it.
+
+For example, if your computer wants to send data to a website, it looks at its route table to find out which gateway to use to reach the internet. The route table might say, "To reach the internet, send data to the router." Then, the router knows how to forward the data to the next stop on its journey, eventually reaching its destination.
+
+Think of a route table as the navigation system for data on a network, helping it find the fastest and most efficient paths to where it needs to go.
+
+Connection between Gateway and Route table
+
+Gateways:
+
+* Gateways are devices (like routers or firewalls) that serve as entry and exit points between different networks.
+* They connect networks with different IP address ranges, such as your local network and the internet.
+* Gateways receive incoming data packets and determine where to send them next based on routing information.
+
+Route Tables:
+
+* Route tables are tables maintained by networking devices (like routers or switches) that contain information about how to route data packets to their destinations.
+* Each entry in a route table specifies a destination network and the next hop (gateway) to reach that network.
+* Devices consult the route table to determine the best path for forwarding data packets based on their destination IP addresses.
+
+Connection:
+
+* When a device (like a computer or server) wants to send data to a destination outside of its local network, it checks its route table.
+* The route table provides the information needed to determine the next hop (gateway) for reaching the destination network.
+* The device then forwards the data packet to the specified gateway, which continues the process until the packet reaches its final destination.
+
+In summary, gateways and route tables work together to facilitate the routing of network traffic between different networks. Gateways serve as the entry and exit points between networks, while route tables provide the necessary routing information to determine how data packets should be forwarded to their destinations.
+
+Now let's come to the practical part,
+
+Steps -
+
+1. ﻿﻿﻿Setting Up a Virtual Private Cloud (VPC)
+2. ﻿﻿﻿Configuring Subnets within the VPC
+3. ﻿﻿﻿Creating Internet Gateway and attaching it to VPC
+4. ﻿﻿﻿Enabling Internet Connectivity with the Internet Gateway by setting up Routing tables
+5. ﻿﻿﻿Enabling Outbound Internet Access through NAT Gateway
+6. Establishing VPC Peering Connections
+
+Let’s come to the first one which involves setting up a virtual private cloud (VPC)
 
 
 
