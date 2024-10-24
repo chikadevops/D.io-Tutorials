@@ -38,7 +38,7 @@ Similarly, without a load balancer, your website could slow down or even crash w
 
 So, in simple terms, a load balancer is like having extra cashiers for your website, making sure everything runs smoothly even when lots of people are trying to visit it at the same time.
 
-**Types of Load balancer**
+### Types of Load balancer
 
 In AWS, there are mainly four types of load balancers:
 1. ﻿﻿﻿Application Load Balancer
@@ -46,7 +46,7 @@ In AWS, there are mainly four types of load balancers:
 3. ﻿﻿﻿Classic Load Balancer
 4. ﻿﻿﻿Gateway Load Balancer In this project, we will exclusively focus on the Application Load Balancer.
 
-**What is an Application Load Balancer**
+### What is an Application Load Balancer**
 
 Imagine you have a website that's getting a lot of visitors. When someone visits your website, their request needs to be sent to one of your website's servers to show them the webpage they want. Now, if you have multiple servers running your website, you need a way to decide which server should handle each request.
 That's where an Application Load Balancer (ALB) comes in.
