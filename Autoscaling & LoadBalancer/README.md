@@ -1,3 +1,5 @@
+# Load Balancer and Autoscaling Group in AWS
+
 ## What is High Availability?
 
 High Availability refers to a system or service that's always up and running, without any significant downtime. It's like having a reliable friend who's always there when you need them. In tech terms, this means designing systems in a way that minimizes the chances of failure. For example, if one part of the system goes down, there's another backup ready to take over immediately, like a spare tire in a car.
