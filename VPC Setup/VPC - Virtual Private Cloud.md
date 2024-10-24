@@ -157,5 +157,7 @@ You are done with the part 1 now, Let's move to part 2 which is configuring subn
 **Part -2**
 
 1. Navigate to the "Subnets" option located at the left side bar
+
 a) Upon clicking, you'll b e directed to the subnets page
+
 b) From there proceed to click on the "Create subnet" button
