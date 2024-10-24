@@ -16,7 +16,7 @@ Let's understand some terms before going ahead with our practical.
 5. ﻿﻿﻿Server Load: Imagine a server like a superhero carrying heavy bags of data. Server load is like how heavy those bags are. Too many bags can slow the superhero down!
 6. Routing: Routing refers to the process of determining the best path for data packets to travel from their source (like a server to their destination (like a client device). It's like finding the most efficient route on a map to reach your destination while avoiding traffic jams and roadblocks. Routing ensures that data packets reach their intended destination quickly and reliably across the network. 
 
-What is Load balancer?
+## What is Load balancer?
 
 Imagine you have a popular restaurant with only one cashier. As the day goes on, more and more customers start coming in, lining up to place their orders. Eventually, the line gets so long that customers become frustrated, some may even leave without ordering, and the cashier gets overwhelmed trying to handle all the orders.
 
@@ -38,7 +38,7 @@ Similarly, without a load balancer, your website could slow down or even crash w
 
 So, in simple terms, a load balancer is like having extra cashiers for your website, making sure everything runs smoothly even when lots of people are trying to visit it at the same time.
 
-Types of Load balancer
+**Types of Load balancer**
 
 In AWS, there are mainly four types of load balancers:
 1. ﻿﻿﻿Application Load Balancer
@@ -46,7 +46,7 @@ In AWS, there are mainly four types of load balancers:
 3. ﻿﻿﻿Classic Load Balancer
 4. ﻿﻿﻿Gateway Load Balancer In this project, we will exclusively focus on the Application Load Balancer.
 
-What is an Application Load Balancer?
+**What is an Application Load Balancer**
 
 Imagine you have a website that's getting a lot of visitors. When someone visits your website, their request needs to be sent to one of your website's servers to show them the webpage they want. Now, if you have multiple servers running your website, you need a way to decide which server should handle each request.
 That's where an Application Load Balancer (ALB) comes in.
@@ -69,17 +69,21 @@ Note- The OSl model is a framework used to understand how different network prot
 
 Let's take a look at a few terms that will help you grasp Auto Scaling Groups easily.
 
-Scaling: Scaling refers to adjusting the size of something to meet changing needs.
+**Scaling:** Scaling refers to adjusting the size of something to meet changing needs.
 In the context of technology, like with websites or apps, scaling means adding more resources, like servers, when there's lots of demand, and removing them when demand goes down. It's like having more waiters in a restaurant during busy times and fewer when it's quiet, so customers don't have to wait too long to be served.
 
-Scaling Out: When things get busy, scaling out means adding more helpers to handle the work. It's like calling in extra staff at a restaurant when there's a rush of customers. This helps keep things running smoothly and prevents long waits. So Scaling Out refers to increasing the number of instances in response to increased demand or workload.
+**Scaling Out:** When things get busy, scaling out means adding more helpers to handle the work. It's like calling in extra staff at a restaurant when there's a rush of customers. This helps keep things running smoothly and prevents long waits. So Scaling Out refers to increasing the number of instances in response to increased demand or workload.
 
-Scaling In: On quieter days, scaling in means sending some of the extra helpers home. It's like letting staff go home early when the restaurant isn't as busy. This saves money and makes sure you're not paying for more help than you need. So Scaling In refers to decreasing the number of instances when the demand or workload decreases.
+**Scaling In:** On quieter days, scaling in means sending some of the extra helpers home. It's like letting staff go home early when the restaurant isn't as busy. This saves money and makes sure you're not paying for more help than you need. So Scaling In refers to decreasing the number of instances when the demand or workload decreases.
 
-Auto scaling: Auto scaling means automatically adjusting the number of servers or * resources based on changing demand or workload. It's like having a smart system that adas more waiters to a restaurant when it gets busy and sends them home when it's quiet, without needing someone to do it manually. This helps ensure that websites or apps can handle varying levels of traffic efficiently and cost-effectively.
+**Auto scaling:** Auto scaling means automatically adjusting the number of servers or * resources based on changing demand or workload. It's like having a smart system that adas more waiters to a restaurant when it gets busy and sends them home when it's quiet, without needing someone to do it manually. This helps ensure that websites or apps can handle varying levels of traffic efficiently and cost-effectively.
 
-What is an Auto-Scaling group in AWS?
+### What is an Auto-Scaling group in AWS?
 
 Think of an Auto Scaling Group in AWS like a team of workers ready to help out when things get busy. You tell AWS how many workers you need at different times, and it automatically aads or removes them based on how much work there is. So, if your website suadenly gets lots of visitors, AWS will quickly add more servers to handle the traffic. And when things calm down, it'll send some servers home to save money. It's like having a flexible workforce that grows and shrinks with your needs, ensuring your website stays up and running smoothly with minimal effort on your part.
 
 Let's move on to the practical aspect. Well split it into two parts. Part 1 will cover setting up the Application Load Balancer, and Part 2 will focus on configuring the Auto Scaling Group.
+
+**Part - 1**
+
+We have created some EC2 instances.
