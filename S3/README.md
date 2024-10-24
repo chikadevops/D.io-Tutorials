@@ -60,7 +60,7 @@ AWS Management Console: It's a website where you can manage all your AWS service
 
 CLI (Command Line Interface): This is a tool that lets you control AWS services using text commanas typed into a terminal or command prompt. It's handy for automating tasks and scripting repetitive actions.
 
-SDKs (Software Development Kits): SDKs are packages of tools and code that help developers build applications that use AWS services. They provide ready-made functions and examples to make it easier to integrate AWS into your software projects, whether you're coding in Jav@Python, Javascript, or another language.
+SDKs (Software Development Kits): SDKs are packages of tools and code that help developers build applications that use AWS services. They provide ready-made functions and examples to make it easier to integrate AWS into your software projects, whether you're coding in Java, Python, Javascript, or another language.
 
 ## What is S3 Versioning?
 
