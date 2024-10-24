@@ -1,4 +1,4 @@
-# Load Balancer and Autoscaling Group in AWS
+# Load Balancer and Auto-Scaling Group in AWS
 
 ## What is High Availability?
 
