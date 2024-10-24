@@ -5,7 +5,7 @@
 High Availability refers to a system or service that's always up and running, without any significant downtime. It's like having a reliable friend who's always there when you need them. In tech terms, this means designing systems in a way that minimizes the chances of failure. For example, if one part of the system goes down, there's another backup ready to take over immediately, like a spare tire in a car.
 High Availability ensures that even if something breaks, the overall service remains accessible and reliable for users.
 
-## What is scalability?
+## What is Scalability?
 
 Scalability is like being able to handle growth without breaking a sweat. Imagine you have a small bakery, and suddenly, you get a lot more customers than expected. Scalability means you can quickly bake more bread and pastries without the bakery falling apart. In tech, it's similar to set up your systems so that they can handle more and more users or customers without crashing or slowing down. So, whether it's adding more servers to your website during a big sale or making sure your app can handle a sudden surge in downloads, scalability ensures everything runs smoothly.
 
