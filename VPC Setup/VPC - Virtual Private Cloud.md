@@ -161,3 +161,4 @@ You are done with the part 1 now, Let's move to part 2 which is configuring subn
 a) Upon clicking, you'll b e directed to the subnets page
 
 b) From there proceed to click on the "Create subnet" button
+
