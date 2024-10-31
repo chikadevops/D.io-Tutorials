@@ -162,3 +162,366 @@ a) Upon clicking, you'll b e directed to the subnets page
 
 b) From there proceed to click on the "Create subnet" button
 
+![](./img%206.png)
+
+2. Please select the ID of the VPC that you created in the previous step (Part 1)
+
+![](./img/img%207.png)
+
+![](./img/img08.png)
+
+3. Now, enter the subnet name,, and specify the IPv4 CIDR for the subnet.
+
+a) Choose the availability zone
+
+b) And specify the IPv4 CIDR for the subnet.
+
+c) To create another subnet, click on the "Add subnet" button.
+
+![](./img/img09.png)
+
+d) Repeat the same steps for the second subnet
+
+e) ensuring to specify the subnet name, choose the availability zone, and provide the IPv4 CIDR.
+
+f) Once completed, click on the "Create" button to create the subnet.
+
+To maintain consistency with our intention of creating both a public and a private subnet, ensure that the naming convention reflects this distinction appropriately.
+
+![](./img/img10.png)
+
+![](./img/img11.png)
+
+Here you'll see your subnets is being created.
+
+![](./img/img12.png)
+
+With the creation of subnets, the second part of the task is now completed. Let's proceed tot the next part, which involves creating an internet gateway and attaching it to the VPC.
+
+###Part-3
+
+1. Navigate the "Internet Gateway" option on the left sidebar.
+
+a) Upon clicking, youll be directed to the Internet Gateway page.
+
+b) From there, proceed to click on the "Create Internet Gateway" button.
+
+![](./img/img13.png)
+
+2. Specify the name of the Internat Gateway
+
+a) Proceed by clicking on the "Create Internet Gateway" button.
+
+![](./img/img14.png)
+
+Now your internet gateway is being successfully created,
+
+![](./img/img15.png)
+
+Now, youll will notice that it is currently detached, indicating that it is not associated with any VPC. TO enable internet connectivity, you must attach the Internet Gateway to the VPC you have previously created.
+
+![](./img/img16.png)
+
+![](./img/img17.png)
+
+Now, attcah it to the VPC
+
+![](./img/img18.png)
+
+![](./img/img19.png)
+
+![](./img/img20.png)
+
+Now, let's come to the next part which is Enabling Internet Connectivity with the INternet Gateway by setting up Routing tables.
+
+### Part-4
+1. Proceed to the "Route Tables" option located on the left sidebar.
+
+a) Once there, click on the "Create route table" button.
+
+![](./img/img21.png)
+
+2. Enter the name of the route table and select the VPC you previously created.
+
+a) Finally, click on the "Create route table" button to proceed.
+
+![](./img/img22.png)
+
+b) Next, click on "Subnet associations", followed by "Edit subnet associations" to associate the subnet with this route table.
+
+![](./img/img23.png)
+
+3. Choose the public subnet and click on save association.
+
+![](./img/img24.png)
+
+4. Navigate the "Routes" and then click on "Edit routes".
+
+![](./img/img25.png)
+
+5. Click on add route.
+
+![](./img/img26.png)
+
+6. Select "Destination" as "0.0.0.0/0," indicating that every IPv4 address can access this subnet.
+
+7. In the "Target" field, choose "Internet Gateway," and then select the Internet Gateway you created. Finally, save the changes.
+
+![](./img/img27.png)
+
+The route table has now been configured to route traffic to the Internet Gateway, allowing connectivity to the Internet. Since only the subnet named "my-public-subnet-1" is associated with this route table, only resources within that sulpet can access the internet.
+
+![](./img/img28.png)
+
+![](./img/img29.png)
+
+Now let's come to the next part which is Enabling Outbound Internet Access through NAT Gateway, (by attaching NAT GAteway to the subnet and attaching the route table.)
+
+### Part-5
+1. Navigate to the "NAT Gateways" secton, then click on "Create NAT Gateway".
+
+![](./img/img30.png)
+
+2. Then mention the name of the NAT Gateway.
+
+![](./img/img31.png)
+
+3. Now, choose the Private subnet.
+
+![](./img/img32.png)
+
+4. Now select the connectivity type as Private.
+
+![](./img/img33.png)
+
+5. Then click on Create NAT Gateway.
+
+![](./img/img34.png)
+
+Your NAT Gateway is being creates successfully.
+
+![](./img/img35.png)
+
+6. Select your NAT Gateway.
+
+7. Then navigate to the "Details" tab.
+
+8. From there, locate the subnet ID and click on it.
+
+![](./img/img36.png)
+
+9. In the subnet page, navigate to the "Route Table" section.
+
+10. Then click on the "route table ID" - In our case - 1"rtb-0c7a305f74ca510d2"
+
+![](./img/img37.png)
+
+11. Proceed to the "Routes"section, then click on "Edit routes."
+
+![](./img/img38.png)
+
+12. Then click on "Add routes".
+
+![](./img/img39.png)
+
+a) Select "Destination" as "0.0.0.0/0."
+
+b) In the "Target" field, choose "NAT Gateway,"
+
+c) Then select the NAT Gateway you created.
+
+d) Finally, save the changes.
+
+![](./img/img40.png)
+
+Now, 13. On the subnet association section, click on edit subnet association.
+
+![](./img/img41.png)
+
+a) Choose the private subnet and click on "Save associations"
+
+![](./img/img42.png)
+
+Now, the subnet has been successfully attached with the route table.
+
+![](./img/img43.png)
+
+![](./img/img44.png)
+
+## Difference between Internet Gateway and NAT Gateway
+
+### Internet Gateway:
+
+Think of it like a door to the internet for your subnet. When you attach an Internet Gateway
+to a subnet, it allows the resources in that subnet (like EC2 instances) to reach out to the internet and also allows internet traffic to reach those resources. It's like having a door both to enter and exit the subnet.
+
+### NAT Gateway:
+
+Imagine it as a one-way street sign for your subnet's traffic. When you attach a NAT Gateway to a subnet, it lets the resources in that subnet (like EC2 instances) access the internet, but it doesn't allow incoming traffic from the internet to reach those resources. It's like the resources can go out to the internet, but the internet traffic can't directly come in.
+
+![](./img/img45.png)
+
+Now, let's proceed further and come to our next part that involves Establishing VPC Peering Connections. For this let's first understand some terms-
+
+**Note-** An EC2 instance is a virtual server in AWS that you can use to run applications. It offers flexible computing power and can be easily scaled up or down. EC2 instances are widely used for hosting websites, running software, and processing data in the cloud.
+
+### What is VPC Peering?
+
+VPC peering is like connecting two virtual offices in the cloud so they can talk to each other directly. Just imagine. two neighboring offices sharing files and chatting without going through a middleman.
+
+* By default, EC2 instances in different VPCs cannot communicate with each other.
+* To enable communication between EC2 instances in different VPCs, you can set up VPC peering, VPN connections, or AWS
+Direct Connect.
+* VPC peering establishes a direct network connection between the VPCs, allowing EC2 instances in one VPC to communicate with
+EC2 instances in the other VPC.
+
+### Why do we need VPC Peering?
+
+We need VPC peering when we want different parts of our cloud network (VPCs) to work together smoothly. Maybe you have one VPC for your development team and another for your marketing team, and you want them to share data securely. That's where VPC peering comes in handy-it lets these VPCs communicate directly, making things easier for everyone.
+
+Additionally, there are some key points that you should be aware of.
+
+* Two VPCs cannot connect to each other. You need to set up VPC peering or use a VPN or Direct Connect to establish connectivity between VPCs.
+
+* Subnets within the same VPC can communicate with each other by default.
+AWS sets up route tables to allow communication within the same VPC.
+
+* EC2 instances in the same subnet can communicate with each other by default,
+assuming they have proper security group rules allowing the desired traffic.
+
+* EC2 instances in different subnets within the
+same VPC can also communicate with each other by default, as long as their associated route tables are configured to allow traffic between subnets.
+
+Now come to the practical part,
+
+**Part-6**
+
+1. Let's begin by creating two VPCs in the same region. Alternatively, you may choose a different region if needed.
+
+![](./img/img46.png)
+
+![](./img/img47.png)
+
+2. Navigate to the "Peering Connections" option on the left sidebar.
+
+a) Upon clicking, you'll be directed to the VPC peering page.
+
+b) From there, proceed to click on the "Create peering Connection" button.
+
+![](./img/img48.png)
+
+3. Now, provide a name for the VPC peering connection.
+
+a) select the requester VPC.
+
+b) Choose the account "My account" since the VPCs are in our own AWS account.
+
+c) Ensure to use the same region, "This Region (ap-southeast-1)," as the VPCs were created in the same region.
+
+d) Next, select the accepter VPC.
+
+e) proceed by clicking on the "Create Peering Connection" button.
+
+![](./img/img49.png)
+
+Then you'll see this,
+
+![](./img/img50.png)
+
+4. In the Peering Connection page, locate the "Actions" option onthe right side.
+
+a) Click on it, then select "Accept Request".
+
+![](./img/img51.png)
+
+b) Click on Accept request.
+
+![](./img/img52.png)
+
+5. Now, click on Main route table ID of the accepter VPC.
+
+![](./img/img53.png)
+
+6. Choose the route table.
+
+a) then navigate to the "Routes" section.
+
+b) Click on "Edit route".
+
+![](./img/img54.png)
+
+c) Click on add route.
+
+![](./img/img55.png)
+
+7. Go to the VPC page
+
+a) Select the request VPC.
+
+b) In the details tab, you'll find the IPv4 CIDR. (in this case - 192.168.0.0/16)
+
+c) Copy this CIDR and paste it in the "Destination" field when adding a route.
+
+![](./img/img56.png)
+
+d) In the target, choose VPC peering and then choose the peering connection you have created. Click on save changes.
+
+![](./img/img57.png)
+
+8. Now, copy the IPv4 CIDR of the accepter VPC. (in this case - 172.16.0.0/16)
+
+![](./img/img58.png)
+
+9. Now, click on Main route table ID of the requester VPC.
+
+![](./img/img59.png)
+
+10. Choose the route table, then navigate to the "Routes" section. Click on "Edit route."
+
+![](./img/img60.png)
+
+11. Click on add route.
+
+a) Paste the CIDR in the "Destination" field.
+
+b) In the target, choose VPC peering
+
+c) Then choose the peering connection you have created.
+
+The connection has been successfully established. Now, resources in the accepter VPC can connect to resources in the requester VPC, and vice versa.
+
+![](./img/img61.png)
+
+Let's see some points that you need to know about VPC Peering, VPC Peering Basics: VPC peering allows direct communication between two VPCs using private IP addresses. Region compatibility: VPC peering can be set up between VPCs in the same AWS region or different regions and the same AWS account or different AWS accounts.
+
+For more reference, you can go through the Create a VPC peering connection.
+
+**CIDR Blocks:** The CIDR blocks of the VPCs involved in the peering connection should not overlap or conflict with each other. Each VPC must have a unique CIDR block.
+
+**IP Addressing:** Resources in one VPC can communicate with resources in the peered VPC using their private IP addresses.
+
+**Security Groups and NACLs:** Ensure proper configuration of Security Groups and Network Access Control Lists (NACLs) to allow traffic between peered VPCs.
+
+**Direct Communication:** Resources in one VPC can directly communicate with resources in the peered VPC without reuiring internet access.
+
+**Transitive Traffic:** Traffic cannot flow through a VPC peering connection to reach other VPCs not directly peered.
+
+**Routing:** Update route tables in both VPCs to allow traffic to flow through the peering connection. Each VPC's route table must contain a route entry for the CIDR block of the peer VPC, pointing to the peering connection.
+
+**Limitations:** There are limits on the number of VPC peering connections that can be established per VPC, as well as limitations on the number of route entries per route table.
+
+Now, let's understand some more terms,
+
+### What is VPC endpoint?
+
+Think of a VPC endpoint like a dedicated, secure tunnel between your house (VPC) and a library (AWS service). Instead of going through the bustling streets (public internet), you have a direct pathway from your home to the library.This pathway ensures that only you and authorized users can access the library's resources, like books or documents, without exposing them to outside risks. Its a private, efficient way to access what you need, keeping your data safe from prying eyes on the internet.
+
+Let's understand the problem we were facing,
+
+When you're backing up data from an EC2 instance to an S3 bucket, it usually goes over the internet, whether the instance is in a public or private subnet. But if the data is sensitive, that means it's risky because hackers could try to get it while it's traveling over the internet.
+
+![](./img/img62.png)
+
+To avoid this risk, we can use something called VPC endpoints. These endpoints make a private connection between the VPC and S3, so the data doesn't have to go over the internet. This way, even sensitive data stays safe from hackers and other threats.
+
+![](./img/img63.png)
