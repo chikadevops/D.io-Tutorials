@@ -80,3 +80,71 @@ In the second part, we'll create a group and ada two more users, Jack and Ade, t
 Navigate to the AWS Management Console
 
 a) Use the search bar to locate the Identity and Access Management (IAM) service.
+
+![](./img/img01.png)
+
+2. Now, on the IAM dashboard, navigate to the left sideebar and click on "Policies".
+
+a) From there, search for "EC2" and select "AmazonEC2FullAccess" from the list of policies.
+
+b) Proceed by clicking on "Create policy" to initiate the policy creation process.
+
+![](./img/img02.png)
+
+3. Now, select all EC2 actions.
+
+![](./img/img03.png)
+
+4. Tick "All resources" all click "Next".
+
+![](./img/img04.png)
+
+5. Now click on create policy
+
+![](./img/img05.png)
+
+This is the policy we have created.
+
+![](./img/img06.png)
+
+6. Now, proceed to the "Users" section, and select the option to "Create User".
+
+![](./img/img07.png)
+
+7. Enter the desired username for the user.
+
+a) Then select the option "Provide user access to the AWS Management Console" if access to web-based console interface is required.
+
+b) Proceed to set up a passwprd for the user.
+
+c) Check the box "Users must create a new password at next sign-in" if allowing users to ochange their password upon first sign-in is preferred.
+
+![](./img/img08.png)
+
+8. Select "Attach policy directly" and navigate to "Filter customer managed policies".
+
+a) Choose the policy you created named "policy_for_eric".
+
+b) Then proceed by clickin "Next".
+
+![](./img/img09.png)
+
+**Note - AWS Policies -**
+
+* Managed Policies: Made by AWS, used by many.
+
+* Customer Managed Policies: You make and manage them.
+
+* Inline Policies: Made for one specific thing.
+
+9. Next, click on "Create User".
+
+
+![](./img/img10.png)
+
+10. Ensure to save these details securely for future reference.
+
+a) Click on "Return to user list".
+
+![](./img/img11.png)
+
