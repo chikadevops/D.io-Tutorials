@@ -104,4 +104,175 @@ Just a quick reminder about the subnets we configuredin our VPC in the previous 
 
 So this EC2 instance hosts our website.
 
+![](./SG%20img/img01.png)
 
+Here's the security group configuration for the instance. In the inbound rules, only IPv4 SSH traffic on  port 22 is permitted to access this instance.
+
+![](./SG%20img/img02.png)
+
+For the outbound rule, you'll notice that all IPv4 traffic wiwth any prootocol on any port number is allowed, meaning this instance has unristricted access to anywhere on the internet.
+
+![](./SG%20img/img03.png)
+
+Now, lets test accessibility to the website using the public IP address assigned to this instance.
+
+Here, let's retrieve the public IP address.
+
+![](./SG%20img/img04.png)
+
+If  you enter "http://54.255.228.191" into your chrome browser, and hit enter, you'll notice that the page doesn't load; it keeos attempting to connect. And finally it'll show this page. After some time, you'll likely see a pade indicating that the site can't be reached.
+
+![](./SG%20img/img05.png)
+
+This is because of the security group, because we haven't defineed HTTP protocol in the security group so whenever the outside world is trying to go inside out instance and trying to get the data, security group is restricting it and that's why we are unable to see the data.
+
+To resolve the issue, we can create a new security group that allows HTTP (port 80) traffic.
+
+1. Navigate to the "Security Groups" section on the left sidebar.
+
+a) Then click on "Create Security Group".
+
+![](./SG%20img/img06.png)
+
+2. Please provide a name and description for the new seccurity group.
+
+a) Ensure to select your VPC during thr creation process.
+
+![](./SG%20img/img07.png)
+
+b) Click on add rule.
+
+![](./SG%20img/img08.png)
+
+c) Now select "HTTP" as the type.
+
+![](./SG%20img/img09.png)
+
+d) Use 0.0.0.0/0 as the CIDR Block. (Here we are allowing every CIDR block by using this CIDR).
+
+Now you will see the rule have been created.
+
+![](./SG%20img/img10.png)
+
+e) Keep outbound rules as it is.
+
+![](./SG%20img/img11.png)
+
+f) Now, click on create security group.
+
+![](./SG%20img/img12.png)
+
+Now, it is being created successfully.
+
+![](./SG%20img/img13.png)
+
+Let's attach this security group to our instance.
+
+3. Now navigate to the instance section of left side bar.
+
+a) Select the instance.
+
+b) Click on "Actions".
+
+c) Choose "Security".
+
+![](./SG%20img/img14.png)
+
+d) Click on "Change security group".
+
+![](./SG%20img/img15.png)
+
+4. Choose the security group created.
+
+![](./SG%20img/img16.png)
+
+a) Click on "Add security group"
+
+![](./SG%20img/img17.png)
+
+b) You can see security group is being added, Click on "save".
+
+***Note -*** The security named "Launch Wizard" you see is the default security group automatically attached when creating the instance. you can edit this security group if needed.
+
+![](./SG%20img/img18.png)
+
+5. Now it is being successfully
+
+a) If you again copy the IP address,
+
+![](./SG%20img/img19.png)
+
+b) And write http://54.255.228.191 in Chrome, we'll be able to see the data of our website.
+
+![](./SG%20img/img20.png)
+
+Currently, let's take a look at how our inbound and outbound rules are configures.
+
+This setup allows the HTTP and SSH protocols to access the instance.
+
+![](./SG%20img/img21.png)
+
+The outbnound rule permits all traffic to exit the instance.
+
+![](./SG%20img/img22.png)
+
+Through this rule, we able to access the website.
+
+![](./SG%20img/img23.png)
+
+6. Let's see how removing the outband rule affects the instance's connectivity. Means now, no one can go outside to this instance.
+
+a) Go to outbound tab.
+
+b) Click on "edit outboound rules".
+
+![](./SG%20img/img24.png)
+
+c) Click on "Delete".
+
+d) Click on "Save rules".
+
+![](./SG%20img/img25.png)
+
+Now that we've removed the outbound rule, let's take a look at how it appears in the configuration.
+
+![](./SG%20img/img26.png)
+
+After making this change, let's test whether we can still access the website.
+
+![](./SG%20img/img27.png)
+
+So, even though we'ev removed the outbound rule that allows all traffic from the instance to the outside world, we can still access the website. According to thw logic we discussed, when a user accesses the instance, the inbound rule permits HTTP protocol rtraffic to enter. However, when the instanc esends data to the user's browser to display the website, the outbound rule should prevent it. Yest, we're still able to view the website. Why might that be?
+
+Security groups are stateful, which means they automatically allow return traffic initiated by the instances to which they are attached. So, even though we removed the outbound rule, the security group allows the return traffic necessary for displaying the website, hence we can still access it.
+
+Let's explore the scenario,
+
+If we delete both the inbound and outbound rules, essentially, we're closing all access to and from the instance. This means no traffic can come into the instance, and the instance cannot send any traffic out. So, if we attempt to access the website from a browser or any other client, it will fail because there are no rules permitting traffic to reach the instance.
+Similarly, the instance won't be able to communicate with any external services or websites because all outbound traffic is also blocked.
+
+7. You will be able to delete the inbound rule in the same way we have deleted the outbound rule.
+
+a) Go to outbound tab.
+
+b) click on edit inbound rule.
+
+![](./SG%20img/img28.png)
+
+c) Click on delete
+
+d) Click on "Save rule".
+
+![](./SG%20img/img29.png)
+
+Currently, let's have a look at how our inbound and outbound rules are configured.
+
+![](./SG%20img/img30.png)
+
+![](./SG%20img/img31.png)
+
+Now, as both the inbound and outbound rules deleted, there's no way for traffic to enter or leave the instance. This means that any attempt to access the website from a browser or any other client will fail because there are no rules permitting traffic to reach the instance. In this state, the instance is essentially isolated from both incoming and outgoing traffic.
+
+So you can't access the website now.
+
+![](./SG%20img/img32.png)
