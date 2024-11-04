@@ -134,23 +134,23 @@ Let’s come to the first one which involves setting up a virtual private cloud 
 
 a) Enter "VPC". Upon locating the relevant result, proceed to click on it, directly to the virtuala private cloud (VPC) page.
 
-![](./img%201.png)
+![](./VPC%20img/img01.png)
 
 2. Please to the "Create VPC" option and click on it.
 
-![](./img%202.png)
+![](./VPC%20img/img02.png)
 
 3. Please select the "VPC only" option, specify the IPv4 CIDR block, and proceed by clicking on the "Create VPC" button.
 
-![](./img%203.png)
+![](./VPC%20img/img03.png)
 
 **Note-** If you encounter an error message statin that the CIDR block size must be between "/16" and "/28" when creating a vpc, it indicates that your provided CIDR block falls outside of this recommended range. Adjusting the CIDR block to fall within the specified range should resolve the issue.
 
-![](./img%204.png)
+![](./VPC%20img/img04.png)
 
 This is the VPc we created,
 
-![](./img%205.png)
+![](./VPC%20img/img05.png)
 
 You are done with the part 1 now, Let's move to part 2 which is configuring subnets within the VPC.
 
