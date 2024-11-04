@@ -66,7 +66,7 @@ Unlike security groups, which are stateful (meaning they remember previous inter
 In simple terms, NACLs act as gatekeepers for your AWS subnets, controlling who can come in and out based on a set of rules you define. They're like the security guards that keep your neighborhood lor your AWS network) safe and secure.
 
 
-### Difference between Security Groups and NACL
+## Difference between Security Groups and NACL
 
 Security Groups in AWS act like virtual firewalls that control traffic at the instance level. They define rules for inbound and outbound traffic based on protocols, ports, and I addresses. Essentially, they protect individual instances by filtering traffic, allowing only authorized communication.
 
@@ -77,8 +77,8 @@ Let's come to the practical part,
 
 This practical will be in Two parts-
 
-1. ﻿﻿﻿Security group
-2. ﻿﻿﻿NACL
+1. Security group
+2. NACL
 
 **Security group**
 
