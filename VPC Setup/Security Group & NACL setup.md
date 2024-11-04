@@ -486,11 +486,9 @@ Additionally, the outbound rule will be removed, deafulting to deny all traffic 
 
 ![](./SG%20img/img68.png)
 
-![](./SG%20img/img69.png)
-
 Now, let's try to access the website
 
-![](./SG%20img/img70.png)
+![](./SG%20img/img69.png)
 
 So we are unable to access the website. why?
 Even if we have allowed inbound traffic for
