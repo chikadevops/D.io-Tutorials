@@ -26,7 +26,7 @@ A load balancer is like adding more cashiers to the restaurant to help manage th
 
 So you can say that a load balancer helps spread the workload across several servers, ensuring that no single server gets overwhelmed with too much traffic or requests. This not only improves the performance and response time of the system but also increases its reliability and availability. If one server goes down, the load balancer can redirect traffic to the remaining servers, minimizing downtime and ensuring that the service remains operational.
 
-**img
+** img **
 
 Why is a load balancer important, and what could happen if we don't use it?
 
