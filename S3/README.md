@@ -75,4 +75,3 @@ Breaking it down into five parts so that it will help us understand it more clea
 Firstly, we will create a new bucket in Amazon 53 to store our files. Following that, we will upload a file into this newly created sucket. Subsequently, we will enable versioning for the bucket, allowing us to retain multiple versions of our uploaded files for tracking changes over time. Next, we will configure the permissions for the bucket * to enable public access, ensuring that the files can be accessed by anyone with the appropriate link. Finally, we will implement lifecycle policies to automate the management of our files.
 
 
-
