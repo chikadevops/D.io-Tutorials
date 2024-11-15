@@ -11,12 +11,12 @@ Scalability is like being able to handle growth without breaking a sweat. Imagin
 
 Let's understand some terms before going ahead with our practical.
 
-1. ﻿﻿﻿Server: It's like a big computer that stores and shares stuff, like websites or apps, with other computers.
-2. ﻿﻿﻿Client: This is your computer or phone, asking the server for stuff, like loading a web page or using an app. 
-3. ﻿﻿﻿Traffic: Think of the "busy road" as the network infrastructure, like highways and streets, that connects servers (where websites and apps are hosted) to clients (like your computer or phone). It's where data packets travel back and forth, carrying information between the servers and the clients.
-4. ﻿﻿﻿Redundancy: This is like having backups for important stuff, just in case something breaks. It's like having spare parts for your bike so you can keep riding even if something breaks.
-5. ﻿﻿﻿Server Load: Imagine a server like a superhero carrying heavy bags of data. Server load is like how heavy those bags are. Too many bags can slow the superhero down!
-6. Routing: Routing refers to the process of determining the best path for data packets to travel from their source (like a server to their destination (like a client device). It's like finding the most efficient route on a map to reach your destination while avoiding traffic jams and roadblocks. Routing ensures that data packets reach their intended destination quickly and reliably across the network. 
+1. **Server:** It's like a big computer that stores and shares stuff, like websites or apps, with other computers.
+2. **Client:** This is your computer or phone, asking the server for stuff, like loading a web page or using an app. 
+3. **Traffic:** Think of the "busy road" as the network infrastructure, like highways and streets, that connects servers (where websites and apps are hosted) to clients (like your computer or phone). It's where data packets travel back and forth, carrying information between the servers and the clients.
+4. **Redundancy:** This is like having backups for important stuff, just in case something breaks. It's like having spare parts for your bike so you can keep riding even if something breaks.
+5. **Server Load:** Imagine a server like a superhero carrying heavy bags of data. Server load is like how heavy those bags are. Too many bags can slow the superhero down!
+6. **Routing:** Routing refers to the process of determining the best path for data packets to travel from their source (like a server) to their destination (like a client device). It's like finding the most efficient route on a map to reach your destination while avoiding traffic jams and roadblocks. Routing ensures that data packets reach their intended destination quickly and reliably across the network. 
 
 ## What is Load balancer?
 
@@ -26,9 +26,9 @@ A load balancer is like adding more cashiers to the restaurant to help manage th
 
 So you can say that a load balancer helps spread the workload across several servers, ensuring that no single server gets overwhelmed with too much traffic or requests. This not only improves the performance and response time of the system but also increases its reliability and availability. If one server goes down, the load balancer can redirect traffic to the remaining servers, minimizing downtime and ensuring that the service remains operational.
 
-**img
+!()[./img/img01.png]
 
-Why is a load balancer important, and what could happen if we don't use it?
+**Why is a load balancer important, and what could happen if we don't use it?**
 
 Imagine your website is like a bustling restaurant, and each visitor is a hungry customer lining up to place an order. Just like how a single cashier would struggle to handle a long line of customers, a single server for your website would struggle to handle too many visitors at once.
 
@@ -43,10 +43,12 @@ So, in simple terms, a load balancer is like having extra cashiers for your webs
 ### Types of Load balancer
 
 In AWS, there are mainly four types of load balancers:
-1. ﻿﻿﻿Application Load Balancer
-2. ﻿﻿﻿Network Load Balancer
-3. ﻿﻿﻿Classic Load Balancer
-4. ﻿﻿﻿Gateway Load Balancer In this project, we will exclusively focus on the Application Load Balancer.
+1. Application Load Balancer
+2. Network Load Balancer
+3. Classic Load Balancer
+4. Gateway Load Balancer
+
+In this project, we will exclusively focus on the Application Load Balancer.
 
 ### What is an Application Load Balancer**
 
