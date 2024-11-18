@@ -92,6 +92,180 @@ Think of an Auto Scaling Group in AWS like a team of workers ready to help out w
 
 Let's move on to the practical aspect. Well split it into two parts. Part 1 will cover setting up the Application Load Balancer, and Part 2 will focus on configuring the Auto Scaling Group.
 
-**Part - 1**
+### Part - 1
 
 We have created some EC2 instances.
+
+![](./img/img04.png)
+
+And these instances contain some website having the below content.
+
+![](./img/img05.png)
+
+![](./img/img06.png)
+
+![](./img/img07.png)
+
+In a real-world scenario, all targets would typically have the same data. But here we've added different data to each of the three target instances to show how the load balancer connects to all of them.
+
+After that,
+
+A - Creating Target groups -
+1. First, navigate to the AWS console
+
+a) Then, locate the EC2 service by using the search fuction.
+
+a) Then click on "EC2"
+
+![](./img/img08.png)
+
+2. Now, scroll down until you locate the target groups. Click on it.
+
+a) The select the option to create a new target group.
+
+![](./img/img09.png)
+
+3. Choose instances as a target type.
+
+![](./img/img10.png)
+
+4. Now, provide a name for your target group.
+
+a) Set the protocol to HTTP
+
+b) Choose port no. as 80
+
+c) Select "IPv4" as the IP address type.
+
+d) Next, select the the VPC that you previously created in your project fromt eh available options.
+
+![](./img/img11.png)
+
+e) Keep all setttings at their default values and proceed by clicking on the "Next" button.
+
+![](./img/img12.png)
+
+5. Now, choose the instances that you've created to serve as targets for the application load balancer.
+
+![](./img/img13.png)
+
+a) Now, click on "include as pending below".
+
+b) Now, click on "Create target group".
+
+![](./img/img14.png)
+
+Your target group is being successsfully created.
+
+![](./img/img15.png)
+
+B - Creating Load balancer
+1. On EC2 page, scroll down until you locate the Load Balancer service. Click on it.
+
+a) Then select the option to create a new load balancer.
+
+![](./img/img16.png)
+
+2. After selecting to create a new load balancer, proceed by choosing the "Create" option specifically for the Application Load Balancer.
+
+![](./img/img17.png)
+
+3. Enter the name of your load balancer, ensuring it reflects its purpse clearly.
+
+a) Then select "Internet-facing" as the scheme.
+
+b) Choose "IPv4" as the IP address type.
+
+![](./img/img18.png)
+
+c) Select the VPC you created in the previous project.
+
+![](./img/img19.png)
+
+d) Select the AZ and choose the public subnet there.
+
+As in our Previous VPC project, we have created only one public subnet but here while creating load balancer, we need at least two public subnets in different AZ's, so now you are aware of how to create subnet and how to do subnet association for route table, so first do that part by right clicking on the tab where you currently are and open a duplicate tab and then on that duplicate tab first create the subnet and attach the route table with that subnet in which we have provided the way how to connect to internet gateway. and then process with this load balance part on the previous tab.
+
+**Note:** your subnet will not be considered as public subnet until you associate the route table which we have given the path for internet gateway so make sure to do that part.
+
+![](./img/img20.png)
+
+a) For now, use the default security group as it is.
+
+![](./img/img21.png)
+
+b) Here select the Target group you have created just before in Part-1.
+
+![](./img/img22.png)
+
+![](./img/img23.png)
+
+c) Now leave everything as it is and click on create load balancer.
+
+![](./img/img24.png)
+
+Your application load balncer has been created successfully.
+
+![](./img/img25.png)
+
+After creating the ALB (Application Load Balancer), go to target groups section and check the health of your instances.
+
+![](./img/img26.png)
+
+**Note:** If you notice that all instances are marked as unhealthy orif any individual instance is deemed unhealthy, it's essential to first verifyy connectivity. You can do this by attempting to ping the instances to confirm network reachability.
+
+To troubleshoot, follow these steps:
+
+1. Search for "Command Prompt" on your laptop.
+
+![](./img/img27.png)
+
+2. Copy the public IP addresses of the instances.
+
+![](./img/img28.png)
+
+3. Open Command Prompt and type:
+
+`ping <Public IP of instance>`
+
+![](./img/img29.png)
+
+It appears that We're currently unable to establish a connection to the instance using its public IP address. If you're able to successfully connect to the instances via their public IP addresses, it confirms that there's connectivity to them. In that case, if the instances are still marked as unhealthy in the load balancer, you may need to investigate further to determine the root cause of the issue.
+
+Let's see some of the thing you need to keep in mind,
+
+**Security Group Configuration:** Make sure that the security groups associated with your instances allow inbound traffic from the Application Load Balancer (ALB) on the necessary ports. Check that the security group rules are correctly configured to allow traffic from the ALB's security group.
+
+**Network ACL Configuration:** If a network ACL (NACL) is attached to the subnet where your target instances ge running, review the inbound and outbound traffic rules of the NACL. Ensure that the NACL is not blocking traffic from the ALB or from the internet to the instances.
+
+**Web Server Configuration:** Verify that your web server is configured correctly on your instances. Check that the web server is listening on the correct port and is serving the correct content. Ensure that there are no misconfigurations or errors in the web server configuration files.
+
+**Firewall Rules:** Check if there are any firewall rules or ip tables rules on the instances that may be blocking incoming traffic. Review the firewall settings to ensure that they allow traffic from the ALB and from the internet.
+
+**Health Check Configuration:** Review the health check settings for your target group. Ensure that the health check path and protocol are configured correctly to match the configuration of your web server. Check that the health check endpoint is accessible and returning the expected response.
+
+**Instance Status:** Verify the status of your instances in the EC2 dashboard.
+Ensure that the instances are running and reachable within your VPC. If there are any issues with the instances themselves, troubleshoot and resolve them accordingly.
+
+If you're seeing this type of output, it indicates that the connectivity has been established.
+
+Currently, our actual output indicates that all instances are healthy.
+
+![](./img/img30.png)
+
+Now,
+
+4. Form the Load Balancer page, copy the DNS of the load balancer.
+
+5. Paste it into a new tab within your chrome browser.
+
+You'll notice that the load balancer is evenly distributing the workload across all three instances.
+
+Now, let's come to our next part
+
+### Part -2
+
+A- Creating Auto scaling group
+1. Go to the search bar on AWS console and search for "Auto Scaling Group". You'll find it there.
+
+a) Click on it.
