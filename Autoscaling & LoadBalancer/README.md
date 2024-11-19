@@ -269,3 +269,225 @@ A- Creating Auto scaling group
 1. Go to the search bar on AWS console and search for "Auto Scaling Group". You'll find it there.
 
 a) Click on it.
+
+![](./img/img31.png)
+
+Alternatively, you can scroll down to the EC2 page and navigate to the Auto Scaling group in the Auto Scaling section. Once there, click on the "Auto Scaling Groups" link to proceed.
+
+2. Click "Create auto scaling group".
+
+![](./img/img32.png)
+
+3. Click on "create a launch template"
+
+![](./img/img33.png)
+
+Now, you will be navigated to the new tab where you will have a launch to template.
+
+4. Choose a name for your launch template.
+
+a) In the "Quick Start" section of the AWS Management Console, select the "Amazon Linux AMI" option.
+
+![](./img/img34.png)
+
+This will provide you with a pre-configured Amazon Machine Image (AMI) for launching instances based on the Amazon Linux operating system.
+
+b) Choose the instance type as "t2 micro"
+
+![](./img/img35.png)
+
+c) Now, choose the "Create new key pair" option in the key pair section.
+
+![](./img/img36.png)
+
+d) Provide a nem for the key pair
+
+e) Click on "Create key pair"
+
+![](./img/img37.png)
+
+You've successfully created and added the key pair to the launch template.
+
+![](./img/img38.png)
+
+f) in the network setting, select your public subnet that you have created in previous project for launching your instanace.
+
+g) When configuring security groups, you have two options: you can either use a pre-existing security group or create a new one.
+
+![](./img/img39.png)
+
+**Note:** Ensure that the security group being used allows inboud and outbound traffic for all types of traffic for the CIDR 0.0.0.0/0
+
+h) Now, click on "Advanced Network Configuration."
+
+![](./img/img40.png)
+
+i) Select the "Enable" oprtion for auto-assignes public IP addresses.
+
+j) And choose the security group that has inbound and outbound rule allowing all traffic.
+
+![](./img/img41.png)
+
+k) Now Go to Advanced settings.
+
+![](./img/img42.png)
+
+l) In the user data section, include the following code
+
+![](./img/img43.png)
+
+```
+#!/bin/bash
+yum update -y
+yum install -y httpd
+service httpd start
+chkconfig httpd on
+echo "<html><body><h1>Welcome to My Website!</h1><p>This content is served by an EC2 instance launched by an Auto Scaling Group.</p></body></html>" > /var/www/html/index.html
+
+```
+
+***Explanation of the use data script:***
+
+***#!/bin/bash:*** This line specifies that the script should be executed using the Bash shell
+
+***yum update -y:*** Updates the package repository and installs any available updates.
+
+***yum install -y httpd:*** Installs the Apache web server (HTTPD) package
+
+***service httpd start:*** Starts the Apache web server
+
+***chkconfig http on:*** Configure apache to start automatically upon instance boot
+
+* chkconfig: This command manages with services start automatically at differnt runtimes
+* httpd: This refers to the Apache HTTP server service
+* on: This option enables the service to start at boot time
+
+***echo "***
+
+***...***
+
+***">/var/www/html/index.html:*** Creates a basic HTML file with a welcome message and saves it as index.html in the default web root directory (/var/www/html).
+
+m) Now, click on "Create launch template."
+
+![](./img/img44.png)
+
+You have successfully created the launch template.
+
+Now, return to your previous tab containing the Auto Scaling Group settings.
+
+![](./img/img45.png)
+
+5. Now, provide a name for the Auto Scaling Group
+
+a) Select the launch template that was create earlier.
+
+![](./img/img46.png)
+
+6. Click on "Next"
+
+7. Choose the instance attributes
+
+8. Select the VPC that was created in the previous project.
+
+a) Select the availability zones.
+
+b) Click on "Next".
+
+![](./img/img47.png)
+
+9. Now, choose the option to "Attach to a new load balancer".
+
+![](./img/img48.png)
+
+a) Select the load balancer types as "Application Load Balancer"
+
+b) Provide a name for the load balancer
+
+c) Choose "Internet-facing" for ther load balncer scheme. Ensure to review the VPC ID before processing
+
+![](./img/img49.png)
+
+d) Please select public subnets for both availability zones.
+
+![](./img/img50.png)
+
+***Note-***
+
+**Region:** Think of a region as a big area, like a country or state, where cloud services are available.
+Each region has multiple data centers, and they're located in different parts of the world. For example, there might be a region in the United States, another in Europe, and so on.
+
+**Availability Zone (AZ):** Within each region, there are separate buildings or facilities called availability zones. You can think of these as neighborhoods within the region. Each availability zone is isolated from the others, so if something goes wrong in one zone, it doesn't affect the others. This adds an extra layer of resilience and reliability to the cloud infrastructure. For more info you can go through <ins>AWS Regions and Zones
+
+
+e) In the default routing configuration, you have the option to create a new target group.
+
+![](./img/img51.png)
+
+f) Provide a name for the target group.
+
+![](./img/img52.png)
+
+g) Now, click on "Next".
+
+![](./img/img53.png)
+
+10. In this section, you can specify your desired capacity for instance created by the Auto Scaling Group.
+
+![](./img/img54.png)
+
+a) Also, specify the minimum and maximum capacity as per your requirements.
+
+![](./img/img55.png)
+
+***Note-***
+
+**Desired Capacity:** This is like deciding how many chairs you want to set up for a party before your guests arrive. It's the number of instances you want your Auto Scaling Group (ASG) to maintain at all times, based on your expected workload.
+
+**Minimum Capacity:** Think of this as the lowest number of chairs you absolutely need to have available, no matter what. It's the minimum number of instances that your ASG will always keep running, even if there's very little traffic or workload.
+
+**Maximum Capacity:** This is like setting a limit on how many chairs you can have at your party, even if more people show up unexpectedly. It's the maximum number of instances that your ASG can scale up to in response to increased traffic or workload.
+
+So, in simpler terms, the desired capacity is what you aim for, the minimum capacity is the lowest you'll accept, and the maximum capacity is the most you're willing to have, even if things get busy.
+
+b) Now, proceed by clicking on "Next."
+
+![](./img/img56.png)
+
+11. Click on "Next" once more to proceed further.
+
+![](./img/img57.png)
+
+12. You can add tags by clicking on "Add Tags".
+
+![](./img/img58.png)
+
+a) Choose the desired key and value for the tag.
+
+b) Then proceed by clicking on "Next".
+
+![](./img/img59.png)
+
+13. Review the settings you have configured for the Auto Scaling Group, and once you're satisfied, click on "Create Auto Scaling group".
+
+![](./img/img60.png)
+
+Your auto scaling group is being confiured successfully
+
+![](./img/img61.png)
+
+14. Click on "new-asg"
+
+15. Navigate to the "instance Management" section
+
+![](./img/img62.png)
+
+Here, you'll observe that the Auto Scaling Group has successfully created instances according to the desired capacity you specified, which in this case is 2.
+
+16. If you navigate to the Load Balancer section in the EC2 page, you'll notice that our load balancer has also been created.
+
+![](./img/img63.png)
+
+***Note-*** In Case If it doesn't appear immediately, try refreshing the page by clicking on the top square-shaped icon. Click on it.
+
+The two instances were created by the Auto Scaling Group. Since the desired capacity was set to 2. the Auto Scaling Group instantiated two instances accordingly. Regarding scaling, the Auto Scaling Group is configured to scale in until there are one instance remaining; it won't decrease the count below this threshold. Similarly, it can scale out to a maximum of four instances based on the load; however, it won't exceed this limit. Now if you want to see the website, you can again use the Load balancer DNS.
