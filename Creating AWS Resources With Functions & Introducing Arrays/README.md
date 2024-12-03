@@ -125,7 +125,7 @@ Let's break down each part of the code.
 create_s3_buckets() \{
 ```
 
-* This line begins the definition of a shell function names ***create_s3_buckets.***
+* This line begins the definition of a shell function named ***create_s3_buckets.***
 
 ```
 # Define a company name as prefix
