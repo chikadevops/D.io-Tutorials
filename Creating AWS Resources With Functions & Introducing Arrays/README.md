@@ -125,7 +125,7 @@ Let's break down each part of the code.
 create_s3_buckets() \{
 ```
 
-* This line begins the definition of a shell function names ***create_s3_buckets.***
+* This line begins the definition of a shell function named ***create_s3_buckets.***
 
 ```
 # Define a company name as prefix
@@ -167,7 +167,7 @@ echo "$\{departments[3]\}"
 # Create S3 bucket using AWS CLI
 aws s3api create-bucket --bucket "$bucket_name" --region your-region
 ```
-* Using the AWS CLI (aws s£ api), we create an S£ bucket with the specified name from the variable ($bucket_name), in the specified AWS region (your-region). Make sure to replace ***"your region"*** with the actual AWS region where you want to create the buckets.
+* Using the AWS CLI (aws s3 api), we create an S3 bucket with the specified name from the variable ($bucket_name), in the specified AWS region (your-region). Make sure to replace ***"your region"*** with the actual AWS region where you want to create the buckets.
 
  `if [ $? -eq 0 ]; then`
 
