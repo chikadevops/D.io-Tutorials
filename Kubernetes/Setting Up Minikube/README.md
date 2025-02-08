@@ -1,4 +1,4 @@
-# Settin Up Minikube
+# Setting Up Minikube
 
 ## Container Orchestration With Kubernetes
 
